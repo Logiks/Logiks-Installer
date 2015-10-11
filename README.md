@@ -17,3 +17,11 @@ How To Use:
 + Unzip the installer into the folder where you want to install the new system
 + Open your browser and load the path to the above root folder (eg http://localhost/logiks/)
 + Installer will start and run you through the installation process.
+
+
+This Uses Github API for displaying and downloading repos.
+  List Tags
+    https://api.github.com/repos/Logiks/Logiks-Core/git/refs/tags
+
+  List Releases
+    https://api.github.com/repos/Logiks/Logiks-Core/releases

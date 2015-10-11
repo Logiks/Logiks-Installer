@@ -21,7 +21,17 @@ $config=array(
  * All system check parameters
  */
 $syscheck=array(
-
+		"PHP version 5.4 or greater required"=>"phpVersion",
+		"cURL PHP Extension is required"=>"func:curl_init",
+		"Test connection to the logiks master server"=>"testConnection",
+		"Permission to write to directories and files"=>"filePermission",
+		"PDO PHP Extension is required"=>"pdoLibrary",
+		"MCrypt PHP Extension is required"=>"library:mcrypt",
+		"Mbstring PHP Extension is required"=>"library:mbstring",
+		"OpenSSL PHP Extension is required"=>"library:openssl",
+		"ZipArchive PHP Library is required"=>"class:ZipArchive",
+		"GD PHP Library is required"=>"library:gd",
+		//""=>"",
     );
 
 /*

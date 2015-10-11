@@ -12,16 +12,18 @@ if(!function_exists("printArray")) {
 	}
 
 	function logData() {
-		$logFile=
-		exit($logFile);
+		$logFile=INSTALLROOT."tmp/installer.log";
 		$args = func_get_args();
         $message = array_shift($args);
 
-        if (is_array($message))
+        if (is_array($message)) {
             $message = implode(PHP_EOL, $message);
-
+		}
         $message = "[" . date("Y/m/d h:i:s", time()) . "] " . vsprintf($message, $args) . PHP_EOL;
-        file_put_contents($logFile, $message, FILE_APPEND);
+        if(file_exists($logFile))
+			file_put_contents($logFile, $message, FILE_APPEND);
+		else
+			file_put_contents($logFile, $message);
 	}
 
 	function initInstaller() {
@@ -36,6 +38,46 @@ if(!function_exists("printArray")) {
 				}
 			}
 		}
+	}
+	
+	function runSystemCheck($sysCheckConfig) {
+		foreach($sysCheckConfig as $a=>$b) {
+			$sysCheckConfig[$a]=checkSystem($b);
+		}
+		return $sysCheckConfig;
+	}
+	function checkSystem($sysKey) {
+		$sysKey=explode(":",$sysKey);
+		switch($sysKey[0]) {
+			case 'phpVersion':
+                return version_compare(PHP_VERSION , "5.4", ">=");
+            break;
+            
+            case 'library':
+                return extension_loaded($sysKey[1]);
+                break;
+            
+            case 'class':
+                return class_exists($sysKey[1]);
+                break;
+                
+            case 'func':
+                return function_exists($sysKey[1]);
+                break;
+                
+            case 'testConnection':
+				
+				break;
+				
+			case 'filePermission':
+				return (is_writable(INSTALLROOT));
+				break;
+				
+			case 'pdoLibrary':
+				return defined('PDO::ATTR_DRIVER_NAME');
+				break;
+		}
+		return false;
 	}
 }
 ?>

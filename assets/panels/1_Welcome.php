@@ -1,3 +1,6 @@
+<?php
+if(!defined('ROOT')) exit('Direct Access Is Not Allowed');
+?>
 <h3>Welcome to Logiks Installation</h3>
 <h6>Thanks for Downloading the Logiks Installer</h6>
 <p>
@@ -18,7 +21,7 @@
 <h3 align="center">ENJOY :-)</h3>
 <script>
 $(function() {
-	html="<a class='btn btn-new' cmd='nextpage' href='2_System_Check'>Agree & Continue</a>";
+	html="<a class='btn btn-new' cmd='nextpage' href='2_System_Check'>Check Compatibility!</a>";
 	$("#toolPanel").html(html);
 });
 </script>
