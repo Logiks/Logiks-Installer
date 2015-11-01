@@ -18,7 +18,7 @@ if(!defined('ROOT')) exit('Direct Access Is Not Allowed');
 		<li>Clone existing project from Github.</li>
 		<li>Deploy existing new system from another Logiks Installer.</li>
 </ol>
-<h3 align="center">ENJOY :-)</h3>
+<h3 align="center">Happy Coding :-)</h3>
 <script>
 $(function() {
 	html="<a class='btn btn-new' cmd='nextpage' href='2_System_Check'>Check Compatibility!</a>";
