@@ -26,10 +26,10 @@ $(function() {
 		toolsAction(cmd,href,this);
 	});
 
-	if(window.location.hash!=null && window.location.hash.length>0) loadPanel(window.location.hash.substr(1));
-	else loadPanel($("#breadcrumb li:first-child a").attr("href"));
+	//if(window.location.hash!=null && window.location.hash.length>0) loadPanel(window.location.hash.substr(1));
+	//else loadPanel($("#breadcrumb li:first-child a").attr("href"));
 
-	//loadPanel($("#breadcrumb li:first-child a").attr("href"));
+	loadPanel($("#breadcrumb li:first-child a").attr("href"));
 });
 function loadTab(panel) {
 	liCurrent=$("#breadcrumb a[href='"+panel+"']").parent();
@@ -41,13 +41,13 @@ function loadTab(panel) {
 	}
 }
 function loadPanel(panel) {
-	$("#dataPanel").html("<div class='loader'>Loading ...</div>");
 	$("#toolPanel").html("");
-
+	$("#dataPanel").html("<div class='loader'>Loading ...</div>");
+	
 	$("#breadcrumb li.active").removeClass("active");
 	$("#breadcrumb a[href='"+panel+"']").parent().addClass("active");
 
-	window.location.hash=panel;
+	//window.location.hash=panel;
 
 	lx=getServiceCMD("panel")+"&panel="+panel;
 	$("#dataPanel").load(lx, function( response, status, xhr ) {
@@ -98,7 +98,7 @@ function showError(errorStatus,errorTitle,errorReasonCode,errorScript) {
 	$("#errorPanel").html(html);
 }
 function getServiceCMD(action) {
-	return "assets/ajax.php?action="+action;
+	return "install_assets/ajax.php?action="+action;
 }
 function lgksToast(msg,opts) {
 	var defOpts = {

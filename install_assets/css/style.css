@@ -264,10 +264,47 @@ a:active, a:hover, a:visited {
 }
 
 .loader {
-  background:transparent url(images/loading.gif) no-repeat center 33%;
-  padding: 50px;
+  /*background:transparent url(images/loading.gif) no-repeat center 33%;*/
+  /*padding: 50px;*/
   text-align: center;
   font-weight: bold;
+  font-size: 0px;
+
+  margin: auto;
+  margin-top: 40px;
+  margin-bottom: 40px;
+
+  height: 60px;
+  width: 60px;
+
+  /*border: 5px solid #FFF;
+  border-radius: 30px;
+  animation: pulsate 1s infinite linear;*/
+
+  /*background: #31708f;
+  border: 2px solid #31708f;
+  box-shadow: 0 -20px 0 24px #FFF inset;
+  box-sizing: border-box;
+  border-radius: 50%;
+  animation: rotate 1s infinite linear;*/
+
+  animation: rotate3d 1.4s infinite ease-in-out, background 1.4s infinite ease-in-out alternate;
+}
+.loaderMini {
+  width: 30px;height: 30px;
+  
+  text-align: center;
+  font-weight: bold;
+  font-size: 0px;
+
+  margin: auto;
+  margin-top: 10px;
+  margin-bottom: 0px;
+
+  border: 4px solid #fff;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: rotate 1s infinite linear;
 }
 .errorLoader {
   background: transparent url(images/bug.png) no-repeat center 25%;
@@ -275,5 +312,5 @@ a:active, a:hover, a:visited {
   text-align: center;
   font-weight: bold;
   font-size: 2em;
-  color: #AA0000;
+  color: #FFF;
 }

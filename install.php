@@ -1,5 +1,5 @@
 <?php
-define('ROOT', dirname(__FILE__) . '/assets/');
+define('ROOT', dirname(__FILE__) . '/install_assets/');
 
 include_once ROOT."config.php";
 include_once ROOT."api.php";
@@ -12,15 +12,16 @@ initInstaller();
 	<title><?=$config['title']?></title>
 	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
 	
-	<link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-	<link href="assets/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
-	<link href="assets/css/style.css" rel="stylesheet" type="text/css"/>	
+	<link href="install_assets/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+	<link href="install_assets/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+    <link href="install_assets/css/animations.css" rel="stylesheet" type="text/css"/>
+	<link href="install_assets/css/style.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 	<div id="wrapper" class="wrapper">
 		<header class="header">
 			<div class='headerLogo'>
-				<img src="assets/css/images/logo.png" alt="Logiks Logo"/>
+				<img src="install_assets/css/images/logo.png" alt="Logiks Logo"/>
 				<h1><?=$config['title']?></h1>
 			</div>
 		</header>
@@ -65,7 +66,7 @@ initInstaller();
 		</footer>
 	</div>
 </body>
-	<script src="assets/js/jquery.js"></script>
-	<script src="assets/js/bootstrap.min.js"></script>
-	<script src="assets/js/script.js"></script>
+	<script src="install_assets/js/jquery.js"></script>
+	<script src="install_assets/js/bootstrap.min.js"></script>
+	<script src="install_assets/js/script.js"></script>
 </html>
