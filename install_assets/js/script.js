@@ -11,6 +11,7 @@ var jsonError={
 		"doclink":"",
 	}
 };
+var debug=false;
 
 $(function() {
 	$("#breadcrumb a[href]").on("click",function(e) {
@@ -26,10 +27,12 @@ $(function() {
 		toolsAction(cmd,href,this);
 	});
 
-	//if(window.location.hash!=null && window.location.hash.length>0) loadPanel(window.location.hash.substr(1));
-	//else loadPanel($("#breadcrumb li:first-child a").attr("href"));
-
-	loadPanel($("#breadcrumb li:first-child a").attr("href"));
+	if(debug) {
+		if(window.location.hash!=null && window.location.hash.length>0) loadPanel(window.location.hash.substr(1));
+		else loadPanel($("#breadcrumb li:first-child a").attr("href"));
+	} else {
+		loadPanel($("#breadcrumb li:first-child a").attr("href"));
+	}
 });
 function loadTab(panel) {
 	liCurrent=$("#breadcrumb a[href='"+panel+"']").parent();
@@ -47,7 +50,9 @@ function loadPanel(panel) {
 	$("#breadcrumb li.active").removeClass("active");
 	$("#breadcrumb a[href='"+panel+"']").parent().addClass("active");
 
-	//window.location.hash=panel;
+	if(debug) {
+		window.location.hash=panel;
+	}
 
 	lx=getServiceCMD("panel")+"&panel="+panel;
 	$("#dataPanel").load(lx, function( response, status, xhr ) {
@@ -66,6 +71,8 @@ function toolsAction(cmd,href,liBtn) {
 			loadPanel(href);
 			$("#breadcrumb li.active").addClass("visited");
 		break;
+		case "func":
+			window[href](cmd,liBtn);
 		default:
 			console.warn("ToolPanel: Command Not Found -> "+cmd);
 		break;

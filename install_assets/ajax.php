@@ -20,9 +20,17 @@ switch ($_REQUEST['action']) {
 			printError("Panel Not Defined");
 		}
 		break;
-
-
+	case 'download':
+		$downloadTraget=INSTALLROOT."tmp/master.zip";
+		$data=file_get_contents($config['download']);
+		file_put_contents($downloadTraget,$data);
+		if(file_exists($downloadTraget)) echo "Download Complete";
+		else echo "Error downloading core files. Try again.";
+		break;
+	case 'extract':
 		
+		break;
+
 	default:
 		printError("Action Not Supported");
 		break;

@@ -3,18 +3,22 @@ if(!defined('ROOT')) exit('Direct Access Is Not Allowed');
 
 $currentIP=$_SERVER['HTTP_HOST'];
 
+$_SESSION['debug']=true;
+
 /*
  * Setup Webroot path
  */
 define('WEBROOT', "http://".str_replace("##".$_SERVER['DOCUMENT_ROOT'],$_SERVER['HTTP_HOST'],"##".ROOT));
-define('INSTALLROOT', dirname(dirname(__FILE__)));
+define('INSTALLROOT', dirname(dirname(__FILE__))."/");
 
 $config=array(
         "title"=>"Logiks Installer v1.0",
-        "copyright"=>"Copyright 2015 OpenLogiks Team",
+        "copyright"=>"Copyright 2016 OpenLogiks Team",
         "CDN"=>WEBROOT,
         "DATASRC"=>WEBROOT."data/",
         "logFile"=>INSTALLROOT."tmp/install.log",
+
+        "download"=>"https://github.com/Logiks/Logiks-Installer/archive/master.zip",
     );
 
 /*

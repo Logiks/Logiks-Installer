@@ -69,4 +69,7 @@ initInstaller();
 	<script src="install_assets/js/jquery.js"></script>
 	<script src="install_assets/js/bootstrap.min.js"></script>
 	<script src="install_assets/js/script.js"></script>
+<script>
+debug=<?=$_SESSION['debug']?>;
+</script>
 </html>

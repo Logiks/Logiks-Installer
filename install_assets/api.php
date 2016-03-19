@@ -40,17 +40,18 @@ if(!function_exists("printArray")) {
 		}
 	}
 	
-	function runSystemCheck($sysCheckConfig) {
+	function runSystemCheck($sysCheckConfig,$config) {
 		foreach($sysCheckConfig as $a=>$b) {
-			$sysCheckConfig[$a]=checkSystem($b);
+			$sysCheckConfig[$a]=checkSystem($b,$config);
 		}
 		return $sysCheckConfig;
 	}
-	function checkSystem($sysKey) {
+	function checkSystem($sysKey,$config) {
 		$sysKey=explode(":",$sysKey);
 		switch($sysKey[0]) {
 			case 'phpVersion':
-                return version_compare(PHP_VERSION , "5.4", ">=");
+				if(version_compare(PHP_VERSION , "5.4", ">=")) return current(explode('-', PHP_VERSION));
+                return false;
             break;
             
             case 'library':
@@ -66,7 +67,13 @@ if(!function_exists("printArray")) {
                 break;
                 
             case 'testConnection':
-				
+            	$url=$config['download'];
+            	$dx=get_headers($url, 1);
+            	if(strpos($dx[0], "200") || strpos($dx[0], "302")) {
+            		return true;
+            	} else {
+            		return false;
+            	}
 				break;
 				
 			case 'filePermission':

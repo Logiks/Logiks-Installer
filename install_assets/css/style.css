@@ -52,12 +52,15 @@ header .headerLogo * {
   color: #333;
 }
 footer {
-  position: fixed;
+  /*position: fixed;
   left: 0px;
   right: 0px;
   bottom: 0px;
   height: 32px;
+  color: white;*/
+  height: 32px;
   color: white;
+  margin-top: 50px;
 }
 footer h5 {
   margin: 8px;
@@ -193,6 +196,7 @@ a:active, a:hover, a:visited {
   color: #333;
 }
 
+/*Breadcrumb*/
 .breadcrumb {
   background: transparent;
   color: white;
@@ -229,6 +233,9 @@ a:active, a:hover, a:visited {
 .breadcrumb li.visited a {
   color: #FFAA33;
 }
+
+
+/*Page Wrapper*/
 #page-wrapper .row>.rowPanel {
   float: none;
   margin: auto;
@@ -252,6 +259,36 @@ a:active, a:hover, a:visited {
 #page-wrapper .row>.rowPanel#errorPanel { 
   margin-top: 0px;
 }
+
+.list-group {
+  /*max-width: 600px;*/
+  margin-bottom: 0px;
+}
+.list-group .list-group-item {
+  background: transparent;
+  border:0px;
+  width: 50%;
+  float: left;
+}
+.list-group .list-group-item .glyphicon {
+  margin-right: 6px;
+  float: left;
+}
+.list-group .list-group-item .glyphicon.glyphicon-remove {
+  color:red;
+}
+
+.alert-danger {
+  background-color: #B30300;
+  border-color: #FFFFFF;
+  color: white;
+}
+.alert-danger h1 {
+  color: white;
+  margin-top: -15px;
+}
+
+/*Error Panels*/
 #errorPanel .alert {
   border-radius: 0px;
   margin-top: 10px;
@@ -263,6 +300,8 @@ a:active, a:hover, a:visited {
   margin-bottom: 8px;
 }
 
+
+/*Loaders*/
 .loader {
   /*background:transparent url(images/loading.gif) no-repeat center 33%;*/
   /*padding: 50px;*/
