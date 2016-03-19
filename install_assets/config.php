@@ -18,7 +18,7 @@ $config=array(
         "DATASRC"=>WEBROOT."data/",
         "logFile"=>INSTALLROOT."tmp/install.log",
 
-        "download"=>"https://github.com/Logiks/Logiks-Installer/archive/master.zip",
+        "download"=>"https://github.com/Logiks/Logiks-Core/archive/master.zip",
     );
 
 /*

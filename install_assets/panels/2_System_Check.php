@@ -9,7 +9,7 @@ $error=0;
 ?>
 <h3>System Check</h3>
 
-<ul class="list-group" style="height: <?=(count($testResults)*40)/2?>px">
+<ul class="list-group" style="height: <?=((ceil(count($testResults))/2)*40)?>px">
 <?php
 	foreach ($testResults as $checkString => $opts) {
 ?>
