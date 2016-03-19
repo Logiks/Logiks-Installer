@@ -77,7 +77,7 @@ if(!function_exists("printArray")) {
 				break;
 				
 			case 'filePermission':
-				return (is_writable(INSTALLROOT));
+				return (is_writable(INSTALLROOT) && is_writable(INSTALLROOT."tmp/"));
 				break;
 				
 			case 'pdoLibrary':
