@@ -1,6 +1,8 @@
 <?php
 if(!defined('ROOT')) exit('Direct Access Is Not Allowed');
 
+session_start();
+
 $currentIP=$_SERVER['HTTP_HOST'];
 
 $_SESSION['debug']=true;
@@ -9,14 +11,15 @@ $_SESSION['debug']=true;
  * Setup Webroot path
  */
 define('WEBROOT', "http://".str_replace("##".$_SERVER['DOCUMENT_ROOT'],$_SERVER['HTTP_HOST'],"##".ROOT));
-define('INSTALLROOT', dirname(dirname(__FILE__))."/");
+define('INSTALLROOT', dirname(dirname(__FILE__))."/test/");
+define('MYROOT', dirname(dirname(__FILE__))."/");
 
 $config=array(
         "title"=>"Logiks Installer v1.0",
         "copyright"=>"Copyright 2016 OpenLogiks Team",
         "CDN"=>WEBROOT,
         "DATASRC"=>WEBROOT."data/",
-        "logFile"=>INSTALLROOT."tmp/install.log",
+        "logFile"=>MYROOT."tmp/install.log",
 
         "download"=>"https://github.com/Logiks/Logiks-Core/archive/master.zip",
     );
@@ -29,8 +32,9 @@ $syscheck=array(
 		"cURL PHP Extension is required"=>"func:curl_init",
 		"Test connection to the logiks master server"=>"testConnection",
 		"Permission to write to directories and files"=>"filePermission",
-        "Tmp folder check"=>"tmpFolder",
-		"PDO PHP Extension is required"=>"pdoLibrary",
+        "Check writing permission to Tmp folder"=>"tmpFolder",
+        "Check writing permission to Install folder"=>"installFolder",
+        "PDO PHP Extension is required"=>"pdoLibrary",
 		"MCrypt PHP Extension is required"=>"library:mcrypt",
 		"Mbstring PHP Extension is required"=>"library:mbstring",
 		"OpenSSL PHP Extension is required"=>"library:openssl",

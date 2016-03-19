@@ -37,6 +37,9 @@ function deploy() {
 		  url: getServiceCMD("deploy"),
 		  context: document.body
 		}).done(function() {
+			$(".downloadContainer .loader").detach();
+			$(".downloadContainer .downloadinStatus").html("<h3>Source file setup complete. Please configure remaining parameters.</h3>");
+
 			html="<a class='btn btn-new' cmd='nextpage' href='4_Configure'>Configure</a>";
 			$("#toolPanel").html(html);
 		}).error(function() {

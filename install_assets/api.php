@@ -12,7 +12,7 @@ if(!function_exists("printArray")) {
 	}
 
 	function logData() {
-		$logFile=INSTALLROOT."tmp/installer.log";
+		$logFile=MYROOT."tmp/installer.log";
 		$args = func_get_args();
         $message = array_shift($args);
 
@@ -77,11 +77,15 @@ if(!function_exists("printArray")) {
 				break;
 				
 			case 'filePermission':
-				return (is_writable(INSTALLROOT));
+				return (is_writable(MYROOT));
 				break;
 			
 			case 'tmpFolder':
-				return (is_readable(INSTALLROOT."tmp/") && is_writable(INSTALLROOT."tmp/"));
+				return (is_readable(MYROOT."tmp/") && is_writable(MYROOT."tmp/"));
+				break;
+
+			case 'installFolder':
+				return (is_readable(INSTALLROOT) && is_writable(INSTALLROOT));
 				break;
 			
 			case 'pdoLibrary':
