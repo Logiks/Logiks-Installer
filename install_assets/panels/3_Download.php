@@ -11,24 +11,36 @@ $(function() {
 });
 function download() {
 	$(".downloadContainer .downloadinStatus").html("DOWNLOADING NOW ...");
-	lx=getServiceCMD("download");
-	$(".downloadContainer .downloadinStatus").load(lx,function(txt) {
-		extract();
-	});
+	$.ajax({
+		  url: getServiceCMD("download"),
+		  context: document.body
+		}).done(function() {
+			extract();
+		}).error(function() {
+			$(".downloadContainer .downloadinStatus").html("<span class='alert alert-danger'>ERROR, DOWNLOADING FILES!</span>");
+		});
 }
 function extract() {
 	$(".downloadContainer .downloadinStatus").html("EXTRACTING FILES NOW ...");
-	lx=getServiceCMD("extract");
-	$(".downloadContainer .downloadinStatus").load(lx,function(txt) {
-		deploy();
-	});
+	$.ajax({
+		  url: getServiceCMD("extract"),
+		  context: document.body
+		}).done(function() {
+			deploy();
+		}).error(function() {
+			$(".downloadContainer .downloadinStatus").html("<span class='alert alert-danger'>ERROR, EXTRACTING FILES!</span>");
+		});
 }
 function deploy() {
 	$(".downloadContainer .downloadinStatus").html("DEPLOYING FILES NOW ...");
-	lx=getServiceCMD("deploy");
-	$(".downloadContainer .downloadinStatus").load(lx,function(txt) {
-		html="<a class='btn btn-new' cmd='nextpage' href='4_Configure'>Configure</a>";
-		$("#toolPanel").html(html);
-	});
+	$.ajax({
+		  url: getServiceCMD("deploy"),
+		  context: document.body
+		}).done(function() {
+			html="<a class='btn btn-new' cmd='nextpage' href='4_Configure'>Configure</a>";
+			$("#toolPanel").html(html);
+		}).error(function() {
+			$(".downloadContainer .downloadinStatus").html("<span class='alert alert-danger'>ERROR, DEPLOYING FILES!</span>");
+		});
 }
 </script>

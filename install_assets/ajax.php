@@ -24,11 +24,16 @@ switch ($_REQUEST['action']) {
 		$downloadTraget=INSTALLROOT."tmp/master.zip";
 		$data=file_get_contents($config['download']);
 		file_put_contents($downloadTraget,$data);
+
 		if(file_exists($downloadTraget)) echo "Download Complete";
-		else echo "Error downloading core files. Try again.";
+		else {
+			header(':', true, 404);
+			header('X-PHP-Response-Code: 404', true, 404);
+			echo "Error downloading core files. Try again.";
+		}
 		break;
 	case 'extract':
-		
+
 		break;
 
 	default:
