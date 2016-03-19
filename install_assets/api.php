@@ -77,9 +77,13 @@ if(!function_exists("printArray")) {
 				break;
 				
 			case 'filePermission':
-				return (is_writable(INSTALLROOT) && is_writable(INSTALLROOT."tmp/"));
+				return (is_writable(INSTALLROOT));
 				break;
-				
+			
+			case 'tmpFolder':
+				return (is_readable(INSTALLROOT."tmp/") && is_writable(INSTALLROOT."tmp/"));
+				break;
+			
 			case 'pdoLibrary':
 				return defined('PDO::ATTR_DRIVER_NAME');
 				break;

@@ -29,6 +29,7 @@ $syscheck=array(
 		"cURL PHP Extension is required"=>"func:curl_init",
 		"Test connection to the logiks master server"=>"testConnection",
 		"Permission to write to directories and files"=>"filePermission",
+        "Tmp folder check"=>"tmpFolder",
 		"PDO PHP Extension is required"=>"pdoLibrary",
 		"MCrypt PHP Extension is required"=>"library:mcrypt",
 		"Mbstring PHP Extension is required"=>"library:mbstring",

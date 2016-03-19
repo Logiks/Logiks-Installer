@@ -1,1 +1,0 @@
-Core Temp Folder
