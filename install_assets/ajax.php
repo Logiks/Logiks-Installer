@@ -31,7 +31,9 @@ switch ($_REQUEST['action']) {
 	case 'deploy':
 		install($_REQUEST['action'],$config['download']);
 		break;
-
+	case 'saveConfig':
+		printArray($_POST);
+		break;
 	default:
 		printError("Action Not Supported");
 		break;
@@ -73,15 +75,15 @@ function install($cmd,$source) {
 			}
 			break;
 		case 'deploy':
-			if(!isset($_SESSION['targetFolder']) || !is_dir($_SESSION['targetFolder'])) {
+			if(!isset($_SESSION['extractionFolder']) || !is_dir($_SESSION['extractionFolder'])) {
 				printError("Deployment Source not found. Try again.",500);
 			}
-			$fs=scandir($_SESSION['targetFolder']);
+			$fs=scandir($_SESSION['extractionFolder']);
 			$installPath=INSTALLROOT;
 			$failure=[];
 			foreach ($fs as $f) {
 				if($f=="." || $f=="..") continue;
-				$srcFile=$_SESSION['targetFolder'].$f;
+				$srcFile=$_SESSION['extractionFolder'].$f;
 				$tarFile=$installPath.$f;
 				if(!rename($srcFile, $tarFile)) {
 					$failure[]=[$srcFile, $tarFile];
@@ -89,11 +91,18 @@ function install($cmd,$source) {
 				//echo "$srcFile $tarFile<br>\n";
 			}
 			if(count($failure)>0) {
+				print_r($failure);
 				printError("Deployment Failed for one or more files. try again.",500);
 			} else {
 				echo "Deployment of all files complete.";
 			}
 			break;
 	}
+}
+function configure($configFile,$configData) {
+	return true;
+}
+function installAPP($appName) {
+
 }
 ?>

@@ -85,7 +85,12 @@ if(!function_exists("printArray")) {
 				break;
 
 			case 'installFolder':
-				return (is_readable(INSTALLROOT) && is_writable(INSTALLROOT));
+				$a=(is_readable(INSTALLROOT) && is_writable(INSTALLROOT));
+				if($a) {
+					$fs=scandir(INSTALLROOT);
+					$a=(count($fs)<=2);
+				}
+				return $a;
 				break;
 			
 			case 'pdoLibrary':

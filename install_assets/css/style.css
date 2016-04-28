@@ -64,7 +64,7 @@ footer {
 }
 footer h5 {
   margin: 8px;
-  float: right;
+  text-align: center;
 }
 .container{
 margin: 0px auto;
@@ -234,6 +234,24 @@ a:active, a:hover, a:visited {
   color: #FFAA33;
 }
 
+citie {
+  font-size: 10px;
+}
+citie:before {
+  content: "(";
+}
+citie:after {
+  content: ")";
+}
+/*Forms*/
+label.form-control-label {
+  height: 34px;
+  vertical-align: middle;
+  line-height: 36px;
+}
+.form-control.error {
+  border: 1px solid red;
+}
 
 /*Page Wrapper*/
 #page-wrapper .row>.rowPanel {
@@ -278,6 +296,19 @@ a:active, a:hover, a:visited {
   color:red;
 }
 
+.accordion .panel {
+  padding: 0px;
+  margin-top: 0px;
+  border-radius: 0px;
+}
+.panel-group .panel-heading {
+  border-radius: 0px;
+}
+
+.alert-info {
+  color: black;
+  padding: 10px;
+}
 .alert-danger {
   background-color: #B30300;
   border-color: #FFFFFF;
@@ -288,6 +319,24 @@ a:active, a:hover, a:visited {
   margin-top: -15px;
 }
 
+.padded a {
+  padding: 20px;
+  border: 2px solid #AAA;
+}
+form hr {
+  margin: 15px 0;
+}
+
+.pager {
+  margin: 20px;
+  margin-bottom: -20px;
+}
+.pager li>a {
+  color: black;
+}
+.pager li.submit>a {
+  float: right;
+}
 /*Error Panels*/
 #errorPanel .alert {
   border-radius: 0px;
