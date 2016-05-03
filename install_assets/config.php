@@ -11,7 +11,7 @@ $_SESSION['debug']=true;
  * Setup Webroot path
  */
 define('WEBROOT', "http://".str_replace("##".$_SERVER['DOCUMENT_ROOT'],$_SERVER['HTTP_HOST'],"##".ROOT));
-define('INSTALLROOT', dirname(dirname(__FILE__))."/test/");
+define('INSTALLROOT', dirname(dirname(__FILE__))."/");
 define('MYROOT', dirname(dirname(__FILE__))."/");
 
 $config=array(

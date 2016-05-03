@@ -5,12 +5,12 @@ $paramArr=[
 		"Configure Database"=>[
 			"title"=>"An empty database is required for this installation.",
 			"form"=>[
-				"database[driver]"=>["title"=>"Database Server","type"=>"select","options"=>["mysqli"=>"MySQL Server"],"required"=>true],
-				"database[host]"=>["title"=>"Database Host","placeholder"=>"The hostname for the database connection.","required"=>true],
-				"database[port]"=>["title"=>"Database Port","placeholder"=>"Specify a non-default port for the database connection."],
-				"database[database]"=>["title"=>"Database Name","placeholder"=>"Specify the name of the empty database.","required"=>true],
-				"database[userid]"=>["title"=>"Database UserID","placeholder"=>"Specify an user with all privileges in the database.","required"=>true],
-				"database[password]"=>["title"=>"Database Password","type"=>"password","required"=>true],
+				"database[core][driver]"=>["title"=>"Database Server","type"=>"select","options"=>["mysqli"=>"MySQL Server"],"required"=>true],
+				"database[core][host]"=>["title"=>"Database Host","placeholder"=>"The hostname for the database connection.","required"=>true],
+				"database[core][port]"=>["title"=>"Database Port","placeholder"=>"Specify a non-default port for the database connection."],
+				"database[core][database]"=>["title"=>"Database Name","placeholder"=>"Specify the name of the empty database.","required"=>true],
+				"database[core][user]"=>["title"=>"Database UserID","placeholder"=>"Specify an user with all privileges in the database.","required"=>true],
+				"database[core][pwd]"=>["title"=>"Database Password","type"=>"password","required"=>true],
 			]
 		],
 		"Admin User"=>[
@@ -150,13 +150,18 @@ $(function() {
 				if(txt=="success") {
 					$("#accordion").parent().html("<h3 align=center>Configuration complete, Please proceed to next level to install apps.</h3>");
 
-					html="<a class='btn btn-new' cmd='nextpage' href='5_QuickStart'>QuickStart</a>";
+					//html="<a class='btn btn-new' cmd='nextpage' href='5_QuickStart'>QuickStart</a>";
+					html="<a class='btn btn-new' cmd='nextpage' href='6_Done'>QuickStart</a>";
 					$("#toolPanel").html(html);
 				} else {
 					$("#accordion").parent().find(".loader").detach();
 					$("#accordion").show();
-					$("#accordion").parent().prepend("<p align=center>Configuration failed, please try again.</p>");
+					$("#accordion").parent().prepend("<p align=center>Configuration failed, "+txt+".</p>");
 				}
+			}).error(function(txt) {
+				$("#accordion").parent().find(".loader").detach();
+				$("#accordion").show();
+				$("#accordion").parent().prepend("<p align=center>Configuration failed, "+txt+".</p>");
 			});
 		} else {
 			lgksToast("Sorry, some required fields are empty. They are marked in red.");
